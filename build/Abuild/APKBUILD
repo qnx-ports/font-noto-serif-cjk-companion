@@ -1,0 +1,35 @@
+# Maintainer: Leo Shen <yishen@qnx.com>
+pkgname=font-noto-serif-cjk
+pkgver=2.003
+pkgrel=0
+pkgdesc="Google Noto Serif CJK fonts"
+url="https://github.com/notofonts/noto-fonts"
+arch="noarch"
+license="OFL-1.1"
+subpackages="$pkgname-extra:_extra"
+_zip_filename=04_NotoSerifCJKOTC.zip
+source="https://github.com/notofonts/noto-cjk/releases/download/Serif$pkgver/$_zip_filename"
+
+prepare() {
+    cd $srcdir
+    unzip $_zip_filename
+}
+
+package() {
+    local base_fonts="NotoSerifCJK-Light.ttc NotoSerifCJK-Regular.ttc NotoSerifCJK-Bold.ttc"
+    pwd
+    for font in $base_fonts; do
+        install -Dm644 $srcdir/OTC/$font -t "$pkgdir"/usr/share/fonts/noto/
+    done
+}
+
+_extra() {
+    local extra_fonts="NotoSerifCJK-ExtraLight.ttc NotoSerifCJK-SemiBold.ttc NotoSerifCJK-Black.ttc"
+    for font in $extra_fonts; do
+        install -Dm644 $srcdir/OTC/$font -t "$subpkgdir"/usr/share/fonts/noto/
+    done
+}
+
+sha512sums="
+fbdf0fe7d9504ee9eb04f431b3192be9a3d1fea3e0e65b83d48eb9dd9ca0e8e924108640fb0ff9483b20cdc4ff767ec4f48eb56465488446086bbdd5f221b6ae  04_NotoSerifCJKOTC.zip
+"
