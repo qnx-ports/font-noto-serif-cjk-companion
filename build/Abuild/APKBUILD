@@ -1,7 +1,7 @@
 # Maintainer: Leo Shen <yishen@qnx.com>
 pkgname=font-noto-serif-cjk
 pkgver=2.003
-pkgrel=${pkgrel:-0}
+pkgrel=0
 pkgdesc="Google Noto Serif CJK fonts"
 url="https://github.com/notofonts/noto-fonts"
 arch="noarch"
@@ -30,7 +30,6 @@ _extra() {
     done
 }
 
-options="$options ${DISABLE_CHECK:+!check}"
 sha512sums="
 fbdf0fe7d9504ee9eb04f431b3192be9a3d1fea3e0e65b83d48eb9dd9ca0e8e924108640fb0ff9483b20cdc4ff767ec4f48eb56465488446086bbdd5f221b6ae  04_NotoSerifCJKOTC.zip
 "
